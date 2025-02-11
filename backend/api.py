@@ -3,12 +3,8 @@ from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from character import generate_chat
-from sdpipeline import generate_image
 from prompt import get_gpt_prompt
 from character import set_key
-from io import BytesIO
-import gc
-import torch
 
 app = FastAPI()
 
