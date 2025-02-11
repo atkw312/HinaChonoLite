@@ -1,5 +1,8 @@
 
 var text = "";
+const API_URL = "https://hinachonolite.onrender.com";
+
+
 async function onLoad() {
     
     var name = document.getElementById("username").value;
@@ -14,7 +17,7 @@ async function onLoad() {
             key: key
         }
 
-        const response = await fetch("http://127.0.0.1:8000/onLoad/", {
+        const response = await fetch(`${API_URL}/onLoad`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
@@ -61,7 +64,7 @@ async function submitForm(e) {
     }
 
     try {
-        const response = await fetch("http://127.0.0.1:8000/generate_response/", {
+        const response = await fetch(`${API_URL}/generate_response`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
@@ -140,11 +143,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
-
-
-// document.addEventListener("DOMContentLoaded", () => {
-//     // if (!sessionStorage.getItem("onLoadExecuted")) {
-//     //     onLoad(); 
-//     // }
-//     document.querySelector("form").addEventListener("submit", submitForm);
-// });
