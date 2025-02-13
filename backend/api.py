@@ -22,9 +22,9 @@ class Params(BaseModel):
 class LoadParams(BaseModel):
     name: str
 
-@app.get("/")
+@app.get("/", methods=["GET", "HEAD"])
 def root():
-    return {'fastapi api'}
+    return {"message": "FastAPI API is running"}
 
 @app.post("/onLoad/")
 async def onLoad(params: LoadParams):
