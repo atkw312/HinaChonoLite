@@ -4,7 +4,6 @@ import os
 
 load_dotenv() 
 
-
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 OPENAI_ORG_ID = os.getenv("OPENAI_ORG_ID")
 OPENAI_PROJECT_ID = os.getenv("OPENAI_PROJECT_ID")
@@ -38,8 +37,6 @@ async def generate_chat(prompt: str):
   for chunk in stream:
       if chunk.choices[0].delta.content is not None:
         full_response += chunk.choices[0].delta.content
-        # print(chunk.choices[0].delta.content, end="")
-  chat_history.append(full_response)
 
   return full_response
 
