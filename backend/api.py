@@ -2,7 +2,7 @@ from fastapi import FastAPI, Response
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from character import generate_chat
+from character import generate_chat, initialize_fastapi
 from prompt import get_gpt_prompt
 
 app = FastAPI()
@@ -29,6 +29,7 @@ def root():
 @app.post("/onLoad/")
 async def onLoad(params: LoadParams):
     global p_template
+    initialize_fastapi()
     p_template = get_gpt_prompt(params.name)
     reply = await generate_chat(prompt=p_template)
     return Response(content=reply, media_type="text/plain")

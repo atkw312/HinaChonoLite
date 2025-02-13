@@ -7,13 +7,17 @@ load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 OPENAI_ORG_ID = os.getenv("OPENAI_ORG_ID")
 OPENAI_PROJECT_ID = os.getenv("OPENAI_PROJECT_ID")
-# print(OPENAI_API_KEY, OPENAI_ORG_ID, OPENAI_PROJECT_ID) 
+print(OPENAI_API_KEY, OPENAI_ORG_ID, OPENAI_PROJECT_ID) 
 
-client = OpenAI(
-    organization=OPENAI_ORG_ID,
-    project=OPENAI_PROJECT_ID,
-    api_key=OPENAI_API_KEY
-)
+client = None
+
+def initialize_fastapi():
+    global client
+    client = OpenAI(
+        organization=OPENAI_ORG_ID,
+        project=OPENAI_PROJECT_ID,
+        api_key=OPENAI_API_KEY
+    )
 
 
 async def generate_chat(prompt: str):
