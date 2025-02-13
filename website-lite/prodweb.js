@@ -1,6 +1,6 @@
 
 var text = "";
-const API_URL = "https://hinachonolite.onrender.com/";
+const API_URL = "https://hinachonolite.onrender.com";
 
 
 async function onLoad() {
