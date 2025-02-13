@@ -7,23 +7,13 @@ load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 OPENAI_ORG_ID = os.getenv("OPENAI_ORG_ID")
 OPENAI_PROJECT_ID = os.getenv("OPENAI_PROJECT_ID")
-print(OPENAI_API_KEY, OPENAI_ORG_ID, OPENAI_PROJECT_ID) 
+# print(OPENAI_API_KEY, OPENAI_ORG_ID, OPENAI_PROJECT_ID) 
 
-client = None
-
-
-def set_key(k):
-    global OPENAI_KEY, client
-    if k and isinstance(k, str) and k.strip():
-        OPENAI_KEY = k 
-        client = OpenAI(
-            organization=OPENAI_ORG_ID,
-            project=OPENAI_PROJECT_ID,
-            api_key=OPENAI_API_KEY
-        )
-        print("✅ OpenAI key updated successfully.")
-    else:
-        print("⚠️ Invalid OpenAI key. Key was not updated.")
+client = OpenAI(
+    organization=OPENAI_ORG_ID,
+    project=OPENAI_PROJECT_ID,
+    api_key=OPENAI_API_KEY
+)
   
 
 async def generate_chat(prompt: str):

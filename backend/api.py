@@ -4,7 +4,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from character import generate_chat
 from prompt import get_gpt_prompt
-from character import set_key
 
 app = FastAPI()
 
