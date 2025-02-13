@@ -22,7 +22,6 @@ class Params(BaseModel):
 
 class LoadParams(BaseModel):
     name: str
-    key: str
 
 @app.get("/")
 def root():
@@ -32,7 +31,6 @@ def root():
 async def onLoad(params: LoadParams):
     global p_template
     p_template = get_gpt_prompt(params.name)
-    set_key(params.key)
     reply = await generate_chat(prompt=p_template)
     return Response(content=reply, media_type="text/plain")
 

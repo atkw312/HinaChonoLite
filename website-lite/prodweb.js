@@ -6,15 +6,12 @@ const API_URL = "https://hinachonolite.onrender.com/docs";
 async function onLoad() {
     
     var name = document.getElementById("username").value;
-    var key = document.getElementById("openaikey").value;
     console.log(name)
-    console.log(key)
 
     try {
 
         data = {
             name: name,
-            key: key
         }
 
         const response = await fetch(`${API_URL}/onLoad`, {
