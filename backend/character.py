@@ -14,7 +14,7 @@ client = OpenAI(
     project=OPENAI_PROJECT_ID,
     api_key=OPENAI_API_KEY
 )
-  
+
 
 async def generate_chat(prompt: str):
   stream = client.chat.completions.create(

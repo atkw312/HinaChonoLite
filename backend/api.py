@@ -26,14 +26,14 @@ class LoadParams(BaseModel):
 def root():
     return {'fastapi api'}
 
-@app.post("/onLoad")
+@app.post("/onLoad/")
 async def onLoad(params: LoadParams):
     global p_template
     p_template = get_gpt_prompt(params.name)
     reply = await generate_chat(prompt=p_template)
     return Response(content=reply, media_type="text/plain")
 
-@app.post("/generate_response")
+@app.post("/generate_response/")
 async def get_text(params: Params):
     global p_template
 

@@ -1,6 +1,6 @@
 
 var text = "";
-const API_URL = "https://hinachonolite.onrender.com";
+const API_URL = "https://hinachonolite.onrender.com/docs";
 
 
 async function onLoad() {
@@ -68,7 +68,7 @@ async function submitForm(e) {
         });
 
         if (!response.ok) {
-            throw new Error(`text Failed to fetch response from /generate_response/: ${response.status} ${response.statusText}`);
+            throw new Error(`text Failed to fetch response from /generate_response: ${response.status} ${response.statusText}`);
         }
 
         const reply = await response.text();
