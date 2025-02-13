@@ -14,7 +14,7 @@ async function onLoad() {
             name: name,
         }
 
-        const response = await fetch(`${API_URL}/onLoad`, {
+        const response = await fetch(`${API_URL}/onLoad/`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
@@ -61,7 +61,7 @@ async function submitForm(e) {
     }
 
     try {
-        const response = await fetch(`${API_URL}/generate_response`, {
+        const response = await fetch(`${API_URL}/generate_response/`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
