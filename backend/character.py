@@ -1,26 +1,26 @@
 from openai import OpenAI
+from dotenv import load_dotenv
+import os
 
-# try:
-#     from mykey import OPENAI_KEY
-#     print("🔑 Using OPENAI_KEY from mykey.py")
-# except ImportError:
-#     from keys import OPENAI_KEY
-#     print("🔑 Using OPENAI_KEY from keys.py (fallback)")
+load_dotenv() 
 
-chat_history = []
-OPENAI_KEY = ""
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_ORG_ID = os.getenv("OPENAI_ORG_ID")
+OPENAI_PROJECT_ID = os.getenv("OPENAI_PROJECT_ID")
+print(OPENAI_API_KEY, OPENAI_ORG_ID, OPENAI_PROJECT_ID)  # Test
 
 client = None
 
 
 def set_key(k):
-    global OPENAI_KEY, client  # Access global variables
-    if k and isinstance(k, str) and k.strip():  # Ensure the key is valid (non-empty string)
-        OPENAI_KEY = k  # Update key
+    global OPENAI_KEY, client
+    if k and isinstance(k, str) and k.strip():
+        OPENAI_KEY = k 
         client = OpenAI(
-            organization='org-8mp3GqL065se45HMQDqJwI5q',
-            project='proj_1a4a7U3ioBOQSsmXTu7WWIIR',
-            api_key=OPENAI_KEY
+            organization=OPENAI_ORG_ID,
+            project=OPENAI_PROJECT_ID,
+            api_key=OPENAI_API_KEY
         )
         print("✅ OpenAI key updated successfully.")
     else:
