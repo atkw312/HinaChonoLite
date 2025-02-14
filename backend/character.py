@@ -13,6 +13,9 @@ client = None
 
 def initialize_fastapi():
     global client
+    if not OPENAI_API_KEY:
+       raise ValueError("missing openai api key")
+
     client = OpenAI(
         organization=OPENAI_ORG_ID,
         project=OPENAI_PROJECT_ID,
@@ -20,7 +23,7 @@ def initialize_fastapi():
     )
 
 
-async def generate_chat(prompt: str):
+def generate_chat(prompt: str):
   stream = client.chat.completions.create(
       model="gpt-4o-mini",
       messages=[{"role": "user", "content": prompt}],

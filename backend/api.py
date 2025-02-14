@@ -29,9 +29,12 @@ def root():
 @app.post("/onLoad/")
 async def onLoad(params: LoadParams):
     global p_template
+    print("gets to load")
     initialize_fastapi()
     p_template = get_gpt_prompt(params.name)
-    reply = await generate_chat(prompt=p_template)
+    print("pre generate")
+    reply = generate_chat(prompt=p_template)
+    print("pre response")
     return Response(content=reply, media_type="text/plain")
 
 @app.post("/generate_response/")
